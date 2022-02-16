@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* 初始化 */
+  * {
+    margin: 0;
+    padding: 0
+  }
+
+  html {
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    width: 100%;
+    height: 100%;
+    /* http://caibaojian.com/css3-background-gradient.html 渐变背景兼容性这里可能需要再该一下*/
+    background: linear-gradient(#0ac2f3, #e4f3f6);
+    background: -moz-linear-gradient(#0ac2f3, #e4f3f6);
+    background: -webkit-linear-gradient(#0ac2f3, #e4f3f6);
+    background: -o-linear-gradient(#0ac2f3, #e4f3f6);
+    background: -ms-linear-gradient(#0ac2f3, #e4f3f6);
+    overflow: hidden;
+  }
+
+  /* 冰墩墩开始 */
+  .bingdundun {
+    position: absolute;
+    left: 20%;
+    top: 100px;
+  }
+
+  .my_body {
+    width: 362px;
+    height: 410px;
+    border: #393939 8px solid;
+    margin: 50px auto;
+    /* border-radius：x x x x / y y y y */
+    border-radius: 88% 88% 62% 68% / 82% 82% 95% 84%;
+    position: absolute;
+    left: 109px;
+    top: -30px;
+    background-color: #fff;
+  }
+
+  .my_body img {
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 120px;
+  }
+
+  .ear_left,
+  .ear_right {
+    background: #393939;
+    width: 81px;
+    height: 115px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .ear_left {
+    left: 150px;
+    top: 26px;
+    animation: ear_left_move 1s infinite alternate;
+  }
+
+  @keyframes ear_left_move {
+    to {
+      /* 旋转div */
+      transform: rotate(-15deg);
+      -ms-transform: rotate(-15deg);
+      -moz-transform: rotate(-15deg);
+      -webkit-transform: rotate(-15deg);
+      -o-transform: rotate(-15deg);
+    }
+  }
+
+
+  .ear_right {
+    left: 362px;
+    top: 28px;
+    animation: ear_right_move 1s infinite alternate;
+  }
+
+  @keyframes ear_right_move {
+    to {
+      /* 旋转div */
+      transform: rotate(15deg);
+      -ms-transform: rotate(15deg);
+      -moz-transform: rotate(15deg);
+      -webkit-transform: rotate(15deg);
+      -o-transform: rotate(15deg);
+    }
+  }
+
+  /* 眼睛部分的动画 */
+  .eye_left,
+  .eye_right {
+    background: #393939;
+    width: 83px;
+    height: 115px;
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .eye_left {
+    left: 185px;
+    top: 122px;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+  }
+
+  .eye_right {
+    left: 329px;
+    top: 122px;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+  }
+
+  /* 眼睛的白色圆环 */
+  .eye_left:before,
+  .eye_right:before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: #fff 5px solid;
+    border-radius: 100%;
+    position: absolute;
+    /*infinite无限播放，alternate动画轮流反向播放  */
+    animation: eye_before_hide 1s cubic-bezier(1, 0, 0, 1) infinite alternate;
+  }
+
+  @keyframes eye_before_hide {
+    from {
+      width: 40px;
+      height: 40px;
+      border: #fff 5px solid;
+    }
+
+    to {
+      width: 30px;
+      height: 20px;
+      border-top: #fff 5px solid;
+      border-right: 0px;
+      border-left: 0px;
+      border-bottom: 0;
+    }
+  }
+
+  .eye_left:before {
+    right: 10px;
+    top: 22px;
+  }
+
+  .eye_right:before {
+    left: 10px;
+    top: 22px;
+  }
+
+  /* 眼睛的白色点 */
+  .eye_left:after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    right: 27px;
+    top: 31px;
+    animation: eye_left_after_hide cubic-bezier(1, 0, 0, 1) 1s infinite alternate;
+  }
+
+  @keyframes eye_left_after_hide {
+    from {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(252, 249, 249);
+      border-top: 0px;
+    }
+
+    to {
+      width: 40px;
+      height: 10px;
+      right: 5px;
+      top: 38px;
+      border-top: #fff 5px solid;
+      transform: rotate(-40deg);
+    }
+  }
+
+  .eye_right:after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    left: 41px;
+    top: 44px;
+    animation: eye_right_after_hide cubic-bezier(1, 0, 0, 1) 1s infinite alternate;
+  }
+
+  @keyframes eye_right_after_hide {
+    from {
+      width: 10px;
+      height: 10px;
+      background-color: rgb(252, 249, 249);
+      border-top: 0px;
+    }
+
+    to {
+      width: 40px;
+      height: 10px;
+      left: 6px;
+      top: 38px;
+      border-top: #fff 5px solid;
+      transform: rotate(40deg);
+    }
+  }
+
+  /* 脸 */
+  .face {
+    position: absolute;
+    border-radius: 48% 48% 44% 49%/ 53% 54% 45% 47%;
+  }
+
+  .my_blue {
+    border: #6bcdf3 5px solid;
+    width: 280px;
+    height: 224px;
+    left: 150px;
+    top: 78px;
+  }
+
+  .my_red {
+    border: #af2350 5px solid;
+    width: 287px;
+    height: 233px;
+    left: 146px;
+    top: 73px;
+  }
+
+  .my_purple {
+    border: #5d75b3 5px solid;
+    width: 295px;
+    height: 240px;
+    left: 142px;
+    top: 70px;
+  }
+
+  .my_yellow {
+    border: #ffc346 5px solid;
+    width: 305px;
+    height: 248px;
+    left: 137px;
+    top: 65px;
+  }
+
+  .my_green {
+    border: #7fcb58 5px solid;
+    width: 313px;
+    height: 256px;
+    left: 133px;
+    top: 61px;
+  }
+
+  .arm_left,
+  .arm_right {
+    background: #333;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .arm_left {
+    width: 75px;
+    height: 118px;
+    left: 64px;
+    top: 244px;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    border-radius: 24% 69% 68% 76%/ 53% 95% 40% 52%;
+  }
+
+  .arm_right {
+    width: 75px;
+    height: 148px;
+    left: 441px;
+    top: 80px;
+    transform: rotate(37deg);
+    -ms-transform: rotate(37deg);
+    -moz-transform: rotate(37deg);
+    -webkit-transform: rotate(37deg);
+    -o-transform: rotate(37deg);
+    border-radius: 56% 62% 98% 6%/ 40% 46% 80% 58%;
+    /* 胳膊动画 */
+    animation: arm_move 1s infinite alternate;
+    transform-origin: left bottom;
+  }
+
+  @keyframes arm_move {
+    form {
+      transform: rotate(27deg);
+    }
+
+    to {
+      transform: rotate(67deg);
+    }
+  }
+
+  /* 右手爱心的一半 */
+  .arm_right:before {
+    content: "";
+    width: 16px;
+    height: 24px;
+    background: #bc242c;
+    position: absolute;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    left: 32px;
+    top: 20px;
+  }
+
+  /* 右手爱心的另外一半 */
+  .arm_right:after {
+    content: "";
+    width: 16px;
+    height: 24px;
+    background: #bc242c;
+    position: absolute;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    left: 26px;
+    top: 20px;
+  }
+
+  .nose {
+    width: 28px;
+    height: 18px;
+    border-radius: 42px 42px 60px 61px/ 30px 30px 50px 46px;
+    background-color: #333333;
+    position: absolute;
+    left: 284px;
+    top: 187px;
+  }
+
+  /* 嘴巴 */
+  .mouse {
+    width: 70px;
+    height: 20px;
+    border-bottom: #393939 5px solid;
+    border-radius: 50%;
+    position: absolute;
+    left: 263px;
+    top: 219px;
+    animation: mouse_hide cubic-bezier(1, 0, 0, 1) 1s infinite alternate;
+  }
+
+  @keyframes mouse_hide {
+    to {
+      left: 259px;
+      width: 78px;
+      height: 60px;
+      border-left: 0;
+      border-right: 0;
+      background: #393939;
+    }
+  }
+
+  /* 嘴巴上半圆 */
+  .mouse::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+    left: 10px;
+    top: -11px;
+  }
+
+
+  /* 嘴巴里的舌头 */
+  .mouse::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    left: 14px;
+    top: 25px;
+    animation: mouse_after_hide cubic-bezier(1, 0, 0, 0) 1s infinite alternate;
+  }
+
+  @keyframes mouse_after_hide {
+    to {
+      width: 52px;
+      height: 32px;
+      background-color: #bc242c;
+    }
+  }
+
+
+
+  /* 腿 */
+  .leg_left,
+  .leg_right {
+    background: #333;
+    position: absolute;
+    width: 83px;
+    height: 80px;
+    border-radius: 0 0 30px 30px;
+    z-index: -1;
+  }
+
+  .leg_left {
+    left: 187px;
+    top: 423px;
+  }
+
+  .leg_right {
+    left: 328px;
+    top: 423px;
+  }
+
+  .leg_left:after,
+  .leg_right:after {
+    content: "";
+    width: 43px;
+    height: 30px;
+    position: absolute;
+    background: #363636;
+    border-radius: 30px;
+  }
+
+  .leg_left:after {
+    bottom: 0;
+    right: -3px;
+  }
+
+  .leg_right:after {
+    bottom: 0;
+    left: -3px;
+  }
+
+  /* 雪花 */
+  .snow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('snow1.png'), url('snow2.png');
+    animation: my_snow 15s linear infinite;
+
+  }
+
+  @keyframes my_snow {
+    0% {
+      background-position: 0 0, 0 0;
+    }
+
+    100% {
+      background-position: 500px 1000px, 500px 500px;
+    }
+  }
+
+  /* 文字 */
+  .font {
+    font-family: Cursive, "Courier New", monospace;
+    margin: 10% 63%;
+    font-size: 24px;
+    animation: font_change 1s linear infinite alternate;
+  }
+
+  @keyframes font_change {
+    from {
+      transform: rotate(-5deg);
+    }
+
+    to {
+      transform: rotate(5deg);
+    }
+  }
+
+  .explain {
+    color: #fff;
+    margin: 30px;
+  }
+
+  @media (max-width: 1199) {
+    .font {
+      margin: 15% 70%;
+    }
+  }
+
+
+  @media (max-width: 991px) {
+    .font {
+      margin: 3% 30%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .font {
+      margin: 3% 30%;
+    }
+  }
+</style>
+
+<body>
+
+  <!--
+  冰墩墩兼容IE 9 ，Firefox ，Safari 和 Chrome，Opera
+-ms- 是IE 9 
+-moz-是Firefox 
+-webkit-是 Safari 和 Chrome
+-o-是 Opera
+-->
+
+  <!-- 冰墩墩 -->
+  <div class="bingdundun">
+    <!-- 冰墩墩身体 -->
+    <div class="my_body"><img
+        src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F46657c5164a1637f8b015ff44be27a020345311d25243-5BjOfc_fw658&refer=http%3A%2F%2Fhbimg.b0.upaiyun.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1647052580&t=9841b8371651dd08d9e9eb09b913f78e"
+        alt=""></div>
+    <!-- 耳朵 -->
+    <div class="ear_left"></div>
+    <div class="ear_right"></div>
+    <!-- 眼睛 -->
+    <div class="eye_left"></div>
+    <div class="eye_right"></div>
+    <!-- 脸 -->
+    <div class="face my_blue"></div>
+    <div class="face my_red"></div>
+    <div class="face my_purple"></div>
+    <div class="face my_yellow"></div>
+    <div class="face my_green"></div>
+    <!-- 鼻子 -->
+    <div class="nose"></div>
+    <!-- 嘴巴 -->
+    <div class="mouse"></div>
+    <!-- 胳膊 -->
+    <div class="arm_left"></div>
+    <div class="arm_right"></div>
+    <!-- 腿 -->
+    <div class="leg_left"></div>
+    <div class="leg_right"></div>
+  </div>
+  <p class="explain">注释：这个动画demo做了多端兼容</p>
+  <p class="font">Hi,我是冰墩墩 ,欢迎来看我 ^_^</p>
+
+
+  <!-- 雪花 -->
+  <div class="snow"></div>
+
+</body>
+
+
+</html>
